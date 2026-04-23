@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sunny Side Inn — Bridgeport, CT</title>
+  <link href="[https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&display=swap](https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&display=swap)" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --sun: #F4A928;
+      --gold: #D4870A;
+      --cream: #FDF6E9;
+      --ink: #1C1409;
+      --mid: #6B5B3E;
+      --light: #EDE3CE;
+      --white: #FFFDF8;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 3rem 2rem;
+      background: var(--ink);
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 110%, #F4A92855 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 10% 20%, #D4870A22 0%, transparent 60%);
+      z-index: 0;
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(244,169,40,0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(244,169,40,0.07) 1px, transparent 1px);
+      background-size: 60px 60px;
+      z-index: 0;
+    }
+
+    .hero-content { position: relative; z-index: 1; }
+
+    .sun-icon {
+      font-size: 3.5rem;
+      margin-bottom: 0.5rem;
+      animation: pulse 3s ease-in-out infinite;
+      display: block;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.08); opacity: 0.85; }
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3.5rem, 9vw, 7.5rem);
+      font-weight: 900;
+      color: var(--sun);
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero h1 span {
+      display: block;
+      color: var(--white);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 0.45em;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.2rem;
+    }
+
+    .hero-address {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.45);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-top: 1.5rem;
+      font-weight: 300;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      margin-top: 2.5rem;
+      padding: 0.85rem 2.5rem;
+      background: var(--sun);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 0.9rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .hero-cta:hover { background: var(--gold); transform: translateY(-2px); }
+    .hero-cta-game { margin-left: 1rem; background: transparent; border: 2px solid var(--sun); color: var(--sun); }
+    .hero-cta-game:hover { background: var(--sun); color: var(--ink); }
+
+    /* ── SECTION WRAPPER ── */
+    .section { padding: 6rem 2rem; max-width: 1200px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--light), transparent);
+      margin: 0 2rem;
+    }
+
+    /* ── GALLERY ── */
+    .gallery-section { background: var(--white); }
+    .gallery-inner { padding: 6rem 2rem; max-width: 1300px; margin: 0 auto; }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-rows: 280px 280px;
+      gap: 10px;
+      margin-top: 3rem;
+    }
+
+    .gallery-item {
+      overflow: hidden;
+      border-radius: 3px;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .gallery-item:first-child {
+      grid-row: 1 / 3;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      display: block;
+    }
+    .gallery-item:hover img { transform: scale(1.04); }
+
+    .gallery-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(28,20,9,0);
+      transition: background 0.3s;
+    }
+    .gallery-item:hover::after { background: rgba(28,20,9,0.15); }
+
+    /* ── RATING SECTION ── */
+    .rating-section {
+      background: var(--ink);
+      padding: 5rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .rating-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 50% 50%, #F4A92818 0%, transparent 70%);
+    }
+    .rating-inner { position: relative; z-index: 1; }
+    .rating-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--sun);
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    .rating-number {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(7rem, 18vw, 14rem);
+      font-weight: 900;
+      color: var(--sun);
+      line-height: 0.85;
+      letter-spacing: -0.04em;
+    }
+    .rating-denom {
+      font-family: 'DM Sans', sans-serif;
+      font-size: clamp(1rem, 2.5vw, 1.6rem);
+      color: rgba(255,255,255,0.35);
+      font-weight: 300;
+      margin-top: 0.5rem;
+      letter-spacing: 0.05em;
+    }
+    .rating-stars {
+      margin-top: 1.5rem;
+      font-size: 1.8rem;
+      letter-spacing: 0.1em;
+      color: var(--sun);
+    }
+    .rating-count {
+      margin-top: 0.75rem;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 0.08em;
+    }
+
+    /* ── AMENITIES ── */
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    .amenity {
+      padding: 2rem 1.5rem;
+      background: var(--white);
+      border: 1px solid var(--light);
+      border-radius: 3px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .amenity:hover { border-color: var(--sun); transform: translateY(-4px); }
+    .amenity-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
+    .amenity h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+    .amenity p { font-size: 0.85rem; color: var(--mid); line-height: 1.5; }
+
+    /* ── REVIEWS ── */
+    .reviews-section { background: var(--white); }
+    .reviews-inner { padding: 6rem 2rem; max-width: 1200px; margin: 0 auto; }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .review-card {
+      background: var(--cream);
+      border: 1px solid var(--light);
+      border-radius: 3px;
+      padding: 2rem;
+      position: relative;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .review-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px rgba(28,20,9,0.08);
+    }
+    .review-card::before {
+      content: '\201C';
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      line-height: 1;
+      color: var(--sun);
+      opacity: 0.3;
+      position: absolute;
+      top: 0.5rem;
+      left: 1.2rem;
+    }
+    .review-stars { color: var(--sun); font-size: 1rem; margin-bottom: 1rem; letter-spacing: 0.05em; }
+    .review-text {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--ink);
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .review-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--sun);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--ink);
+      flex-shrink: 0;
+    }
+    .review-name {
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+    .review-date {
+      font-size: 0.75rem;
+      color: var(--mid);
+    }
+
+    /* ── CONTACT / FOOTER ── */
+    .footer-section {
+      background: var(--ink);
+      padding: 5rem 2rem 3rem;
+      color: var(--white);
+      text-align: center;
+    }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--sun);
+      margin-bottom: 0.5rem;
+    }
+    .footer-tagline {
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 3rem;
+    }
+    .footer-info {
+      display: flex;
+      justify-content: center;
+      gap: 4rem;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+    .footer-info-item h4 {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--sun);
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+    .footer-info-item p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.6;
+    }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 2rem;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.2);
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1.2rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(28,20,9,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(244,169,40,0.1);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: 1.3rem;
+      color: var(--sun);
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 400;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--sun); }
+
+    /* ── COUNTDOWN ── */
+    .countdown-section {
+      background: var(--sun);
+      padding: 5rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .countdown-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(28,20,9,0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(28,20,9,0.07) 1px, transparent 1px);
+      background-size: 50px 50px;
+    }
+    .countdown-inner { position: relative; z-index: 1; }
+    .countdown-label {
+      font-size: 0.8rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(28,20,9,0.6);
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+    }
+    .countdown-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 6vw, 4.5rem);
+      font-weight: 900;
+      color: var(--ink);
+      line-height: 1.05;
+      margin-bottom: 0.5rem;
+    }
+    .countdown-title span {
+      font-style: italic;
+      font-weight: 400;
+    }
+    .countdown-date-text {
+      font-size: 0.85rem;
+      color: rgba(28,20,9,0.55);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 2.5rem;
+    }
+    .countdown-grid {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .countdown-block {
+      background: var(--ink);
+      border-radius: 4px;
+      padding: 1.2rem 1.6rem;
+      min-width: 90px;
+    }
+    .countdown-num {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 900;
+      color: var(--sun);
+      line-height: 1;
+    }
+    .countdown-unit {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-top: 0.3rem;
+    }
+    .countdown-sep {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 900;
+      color: var(--ink);
+      opacity: 0.4;
+      line-height: 1;
+      margin-bottom: 1.2rem;
+    }
+
+    .review-link {
+      color: var(--gold);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      font-style: normal;
+      transition: color 0.2s;
+    }
+    .review-link:hover { color: var(--sun); }
+
+    /* ── VIDEO MODAL ── */
+    .video-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: rgba(10,6,2,0.88);
+      backdrop-filter: blur(8px);
+      justify-content: center;
+      align-items: center;
+      padding: 1.5rem;
+    }
+    .video-modal.open { display: flex; }
+    .video-modal-box {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      border-radius: 6px;
+      overflow: hidden;
+      background: #000;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(244,169,40,0.2);
+      animation: modalIn 0.3s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    @keyframes modalIn {
+      from { opacity: 0; transform: scale(0.92); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+    .video-modal-box video {
+      width: 100%;
+      display: block;
+      max-height: 80vh;
+    }
+    .video-close {
+      position: absolute;
+      top: 0.75rem;
+      right: 0.75rem;
+      z-index: 10;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(28,20,9,0.75);
+      border: 1px solid rgba(244,169,40,0.4);
+      color: var(--sun);
+      font-size: 1.3rem;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .video-close:hover { background: var(--sun); color: var(--ink); transform: scale(1.1); }
+
+    /* ── GAME BAR ── */
+    .game-bar {
+      background: #0d0a05;
+      padding: 2rem;
+      text-align: center;
+      border-top: 1px solid rgba(244,169,40,0.15);
+    }
+    .game-btn {
+      background: transparent;
+      border: 2px solid var(--sun);
+      color: var(--sun);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      padding: 1rem 2.5rem;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    .game-btn:hover {
+      background: var(--sun);
+      color: var(--ink);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(244,169,40,0.3);
+    }
+
+    /* ── GAME MODAL ── */
+    .game-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 998;
+      background: rgba(10,6,2,0.9);
+      backdrop-filter: blur(8px);
+      justify-content: center;
+      align-items: center;
+      padding: 1.5rem;
+    }
+    .game-modal.open { display: flex; }
+    .game-modal-box {
+      width: 100%;
+      max-width: 1000px;
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(244,169,40,0.2);
+      animation: modalIn 0.3s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .game-modal-header {
+      background: var(--ink);
+      border-bottom: 1px solid rgba(244,169,40,0.2);
+      padding: 0.75rem 1.2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--sun);
+      letter-spacing: 0.05em;
+      flex-shrink: 0;
+    }
+    .game-modal-box iframe {
+      flex: 1;
+      width: 100%;
+      border: none;
+      background: #000;
+    }
+    .game-close {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(244,169,40,0.1);
+      border: 1px solid rgba(244,169,40,0.3);
+      color: var(--sun);
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, transform 0.2s;
+      flex-shrink: 0;
+    }
+    .game-close:hover { background: var(--sun); color: var(--ink); transform: scale(1.1); }
+
+    /* ── SCROLL ANIMATION ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+}
+
+    @media (max-width: 768px) {
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+      }
+      .gallery-item:first-child { grid-row: auto; }
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1.2rem; }
+      .footer-info { gap: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="video-modal" id="videoModal" onclick="closeVideoModal(event)">
+    <div class="video-modal-box">
+      <button class="video-close" onclick="closeVideoModal()">&times;</button>
+      <video id="modalVideo" controls playsinline>
+        <source src="[https://raw.githubusercontent.com/sunnysideinn/sunnysideinn.github.io/refs/heads/main/SunnySide.mp4](https://raw.githubusercontent.com/sunnysideinn/sunnysideinn.github.io/refs/heads/main/SunnySide.mp4)" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+
+  <div class="game-modal" id="gameModal" onclick="closeGameModal(event)">
+    <div class="game-modal-box">
+      <div class="game-modal-header">
+        <span>🎮 Frank the Tank's Favorite Game</span>
+        <button class="game-close" onclick="closeGameModal()">&times;</button>
+      </div>
+      <iframe id="gameFrame" src="" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <nav>
+    <span class="nav-logo">☀ Sunny Side Inn</span>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <span class="sun-icon">☀️</span>
+      <h1>
+        <span>Welcome to</span>
+        Sunny Side Inn
+      </h1>
+      <p class="hero-address">174 Lake Street · Bridgeport, Connecticut</p>
+      <button class="hero-cta" onclick="openVideoModal()">▶ Explore the Inn</button>
+      <button class="hero-cta hero-cta-game" onclick="openGameModal()">Play Frank the Tank's Favorite Game 👾</button>
+    </div>
+  </section>
+
+  <section class="gallery-section" id="gallery">
+    <div class="gallery-inner">
+      <div class="fade-up">
+        <p class="section-label">Take a Look Around</p>
+        <h2 class="section-title">A Home Away From Home</h2>
+        <p style="color:var(--mid);max-width:520px;line-height:1.7;font-size:0.95rem;">
+          Nestled in the heart of Bridgeport, Sunny Side Inn offers warm, comfortable accommodations with all the character of a true New England retreat.
+        </p>
+      </div>
+      <div class="gallery-grid fade-up">
+        <div class="gallery-item">
+          <img src="[https://raw.githubusercontent.com/sunnysideinn/sunnysideinn.github.io/refs/heads/main/IMG_8054.jpeg](https://raw.githubusercontent.com/sunnysideinn/sunnysideinn.github.io/refs/heads/main/IMG_8054.jpeg)" alt="Sunny Side Inn exterior" loading="lazy" />
+        </div>
+        <div class="gallery-item">
+          <img src="[https://raw.githubusercontent.com/sunnysideinn/sunnysideinn.github.io/refs/heads/main/IMG_8128.jpeg](https://raw.githubusercontent.com/sunnysideinn/sunnysideinn.github.io/refs/heads/main/IMG_8128.jpeg)" alt="Sunny Side Inn interior" loading="lazy" />
+        </div>
+        <div class="gallery-item">
+          <img src="[https://raw.githubusercontent.com/sunnysideinn/sunnysideinn.github.io/refs/heads/main/IMG_8275.png](https://raw.githubusercontent.com/sunnysideinn/sunnysideinn.github.io/refs/heads/main/IMG_8275.png)" alt="Sunny Side Inn room" loading="lazy" />
+        </div>
+        <div class="gallery-item">
+          <img src="[https://raw.githubusercontent.com/sunnysideinn/sunnysideinn.github.io/refs/heads/main/IMG_8470.jpeg](https://raw.githubusercontent.com/sunnysideinn/sunnysideinn.github.io/refs/heads/main/IMG_8470.jpeg)" alt="Sunny Side Inn amenities" loading="lazy" />
+        </div>
+        <div class="gallery-item">
+          <img src="[https://raw.githubusercontent.com/sunnysideinn/sunnysideinn.github.io/refs/heads/main/IMG_8471.jpeg](https://raw.githubusercontent.com/sunnysideinn/sunnysideinn.github.io/refs/heads/main/IMG_8471.jpeg)" alt="Sunny Side Inn common area" loading="lazy" />
+        </div>
+        <div class="gallery-item" style="display:none;">
+          <img src="[https://raw.githubusercontent.com/sunnysideinn/sunnysideinn.github.io/refs/heads/main/IMG_8472.jpeg](https://raw.githubusercontent.com/sunnysideinn/sunnysideinn.github.io/refs/heads/main/IMG_8472.jpeg)" alt="Sunny Side Inn detail" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="rating-section" id="rating">
+    <div class="rating-inner fade-up">
+      <p class="rating-label">Guest Rating</p>
+      <div class="rating-number">6.7</div>
+      <div class="rating-denom">out of 10</div>
+      <div class="rating-stars">★★★★★</div>
+      <p class="rating-count">Based on verified guest reviews</p>
+    </div>
+  </section>
+
+  <section id="amenities" style="background:var(--cream);padding:0;">
+    <div class="section">
+      <div class="fade-up">
+        <p class="section-label">What We Offer</p>
+        <h2 class="section-title">Inn Features & Amenities</h2>
+      </div>
+      <div class="amenities-grid">
+        <div class="amenity fade-up">
+          <span class="amenity-icon">🛏</span>
+          <h3>Comfortable Rooms</h3>
+          <p>Well-appointed rooms with cozy bedding and all the essentials for a restful night.</p>
+        </div>
+        <div class="amenity fade-up">
+          <span class="amenity-icon">📍</span>
+          <h3>Prime Location</h3>
+          <p>Conveniently located on Lake Street in Bridgeport with easy access to local attractions.</p>
+        </div>
+        <div class="amenity fade-up">
+          <span class="amenity-icon">☕</span>
+          <h3>Morning Coffee</h3>
+          <p>Start your day right with fresh coffee and a welcoming common space to unwind.</p>
+        </div>
+        <div class="amenity fade-up">
+          <span class="amenity-icon">🅿️</span>
+          <h3>Free Parking</h3>
+          <p>On-site parking available for all guests — no hassle, no fees.</p>
+        </div>
+        <div class="amenity fade-up">
+          <span class="amenity-icon">📶</span>
+          <h3>Free Wi-Fi</h3>
+          <p>Stay connected throughout your stay with complimentary high-speed wireless internet.</p>
+        </div>
+        <div class="amenity fade-up">
+          <span class="amenity-icon">🌤</span>
+          <h3>Sunny Atmosphere</h3>
+          <p>Bright, cheerful spaces that live up to the name — every visit feels like a sunny day.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="reviews-section" id="reviews">
+    <div class="reviews-inner">
+      <div class="fade-up">
+        <p class="section-label">Guest Reviews</p>
+        <h2 class="section-title">What Our Guests Are Saying</h2>
+      </div>
+      <div class="reviews-grid">
+
+        <div class="review-card fade-up">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">I've been living here for years and I wouldn't have it any other way. Sunny Side Inn is genuinely my home. The staff knows my name, my room is always perfect, and there's nowhere in Bridgeport that comes close. This place is the real deal — I'm not going anywhere.</p>
+          <div class="review-author">
+            <div class="review-avatar">AM</div>
+            <div>
+              <div class="review-name">Angel Meatball</div>
+              <div class="review-date">Long-term Resident · ★★★★★</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card fade-up">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">I was recording vocals for my song here late one night and honestly I was being way too loud. The workers could've shut me down immediately but they were incredibly understanding — they let me keep going and finish the session. That kind of patience and heart is rare. Shoutout to the whole staff. The song is out now if you want to hear what all the noise was about. 🎵 <a href="[https://youtu.be/P_jl4Nf3Dyk](https://youtu.be/P_jl4Nf3Dyk)" target="_blank" rel="noopener" class="review-link">"Angel We're Sorry"</a></p>
+          <div class="review-author">
+            <div class="review-avatar">DD</div>
+            <div>
+              <div class="review-name">Derek Donut</div>
+              <div class="review-date">Stayed January 2025 · ★★★★★</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card fade-up">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">I have to give the staff here the utmost respect. During my stay there was a guy named Christopher who would not leave me alone — calling me DirtBlock, fatkid, Gerald, you name it. Just relentless harassment. The staff handled it with complete professionalism and calm. No drama, no escalation — they just quietly called the police. Christopher was removed from the premises and is now on house arrest. Home and school and back. That's it. That's all he gets. The staff at Sunny Side Inn genuinely looked out for me and I will never forget that. This place is a sanctuary.</p>
+          <div class="review-author">
+            <div class="review-avatar">SD</div>
+            <div>
+              <div class="review-name">Steve Dirtblock</div>
+              <div class="review-date">Stayed February 2025 · ★★★★★</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card fade-up">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">I don't even know where to start. The chef here makes meatballs that are genuinely on another level — I've traveled the world and I promise you there is no place on this entire planet that makes better meatballs than Sunny Side Inn. Not one. The WiFi is also insanely fast, I've been streaming live on Twitch with zero buffering, zero drops, completely smooth every single time. If you're a streamer this place is a cheat code. Come through and catch me live at <a href="[https://www.twitch.tv/plaqueboymax](https://www.twitch.tv/plaqueboymax)" target="_blank" rel="noopener" class="review-link">plaqueboymax</a> — I'm probably streaming from this very inn right now.</p>
+          <div class="review-author">
+            <div class="review-avatar">JS</div>
+            <div>
+              <div class="review-name">Josef Skytop</div>
+              <div class="review-date">Stayed April 2025 · ★★★★★</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="countdown-section">
+    <div class="countdown-inner fade-up">
+      <p class="countdown-label">🎉 Upcoming Event</p>
+      <h2 class="countdown-title">Sunny Side Takeover<br><span>Frank Party</span></h2>
+      <p class="countdown-date-text">June 7, 2026 · 174 Lake Street, Bridgeport CT</p>
+      <div class="countdown-grid">
+        <div class="countdown-block">
+          <div class="countdown-num" id="cd-days">--</div>
+          <div class="countdown-unit">Days</div>
+        </div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-block">
+          <div class="countdown-num" id="cd-hours">--</div>
+          <div class="countdown-unit">Hours</div>
+        </div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-block">
+          <div class="countdown-num" id="cd-mins">--</div>
+          <div class="countdown-unit">Minutes</div>
+        </div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-block">
+          <div class="countdown-num" id="cd-secs">--</div>
+          <div class="countdown-unit">Seconds</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer-section" id="contact">
+    <div class="footer-logo">Sunny Side Inn</div>
+    <p class="footer-tagline">Bridgeport's Warmest Welcome</p>
+    <div class="footer-info">
+      <div class="footer-info-item">
+        <h4>Address</h4>
+        <p>174 Lake Street<br>Bridgeport, CT 06604</p>
+      </div>
+      <div class="footer-info-item">
+        <h4>Check-In</h4>
+        <p>From 3:00 PM<br>Check-out by 11:00 AM</p>
+      </div>
+      <div class="footer-info-item">
+        <h4>Rating</h4>
+        <p>6.7 / 10<br>★★★★★ Verified Reviews</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 Rojas Productions · All Rights Reserved
+    </div>
+  </footer>
+
+  <div class="game-bar">
+    <button class="game-btn" onclick="openGameModal()">Play Frank the Tank's Favorite Game 👾</button>
+  </div>
+
+  <script>
+    // Game modal
+    function openGameModal() {
+      const modal = document.getElementById('gameModal');
+      document.getElementById('gameFrame').src = '[https://webdashers.github.io](https://webdashers.github.io)';
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function closeGameModal(e) {
+      if (e && e.target !== document.getElementById('gameModal') && !e.target.classList.contains('game-close')) return;
+      const modal = document.getElementById('gameModal');
+      modal.classList.remove('open');
+      document.getElementById('gameFrame').src = '';
+      document.body.style.overflow = '';
+    }
+    
+    document.getElementById('gameModal').addEventListener('click', function(e) {
+      if (e.target === this) closeGameModal();
+    });
+
+    // Video modal
+    function openVideoModal() {
+      const modal = document.getElementById('videoModal');
+      modal.classList.add('open');
+      document.getElementById('modalVideo').play();
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function closeVideoModal(e) {
+      if (e && e.target !== document.getElementById('videoModal') && !e.target.classList.contains('video-close')) return;
+      const modal = document.getElementById('videoModal');
+      modal.classList.remove('open');
+      const vid = document.getElementById('modalVideo');
+      vid.pause();
+      vid.currentTime = 0;
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        closeVideoModal({});
+        closeGameModal({});
+      }
+    });
+
+    // Scroll fade-up
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(el => {
+        if (el.isIntersecting) {
+          el.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Countdown to June 7, 2026
+    function updateCountdown() {
+      const target = new Date('2026-06-07T00:00:00');
+      const now = new Date();
+      const diff = target - now;
+      if (diff <= 0) {
+        document.getElementById('cd-days').textContent = '00';
+        document.getElementById('cd-hours').textContent = '00';
+        document.getElementById('cd-mins').textContent = '00';
+        document.getElementById('cd-secs').textContent = '00';
+        return;
+      }
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const secs = Math.floor((diff % (1000 * 60)) / 1000);
+      document.getElementById('cd-days').textContent = String(days).padStart(2, '0');
+      document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+      document.getElementById('cd-mins').textContent = String(mins).padStart(2, '0');
+      document.getElementById('cd-secs').textContent = String(secs).padStart(2, '0');
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+    
+    // Unhide final gallery item correctly via script
+    const hidden = document.querySelector('.gallery-item[style*="display:none"]');
+    if (hidden) {
+      hidden.style.display = '';
+    }
+  </script>
+</body>
+</html>

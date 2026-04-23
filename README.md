@@ -1,1 +1,0 @@
-# sunnysideinn.github.io

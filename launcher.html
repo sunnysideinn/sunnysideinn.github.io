@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>void launcher</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&family=DM+Sans:wght@300;400&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0a0a0f;
+    color: #e8e8f0;
+    font-family: 'DM Sans', sans-serif;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    height: 100vh;
+    gap: 24px;
+  }
+  h1 {
+    font-family: 'Space Mono', monospace;
+    font-size: 48px;
+    background: linear-gradient(135deg, #7c6fff, #ff6f9c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -2px;
+  }
+  p { color: #666680; font-size: 14px; }
+  button {
+    padding: 14px 40px;
+    background: #7c6fff;
+    border: none; border-radius: 10px;
+    color: #fff; font-family: 'DM Sans', sans-serif;
+    font-size: 15px; font-weight: 500;
+    cursor: pointer; transition: all 0.15s;
+  }
+  button:hover { background: #9585ff; transform: translateY(-2px); }
+</style>
+</head>
+<body>
+  <h1>void</h1>
+  <p>click to launch in a clean window</p>
+  <button onclick="launch()">Launch Browser</button>
+
+<script>
+function launch() {
+  // Read browser.html as text and inject into about:blank
+  fetch('browser.html')
+    .then(r => r.text())
+    .then(html => {
+      const w = window.open('about:blank', '_blank',
+        'width=' + screen.availWidth + ',height=' + screen.availHeight + ',menubar=no,toolbar=no,location=no,status=no');
+      w.document.open();
+      w.document.write(html);
+      w.document.close();
+    });
+}
+</script>
+</body>
+</html>
